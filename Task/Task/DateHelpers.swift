@@ -8,9 +8,13 @@
 
 import Foundation
 
-func stringValue() -> String {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .medium
+extension Date {
     
-    return formatter.string(from: self)
+    func stringValue() -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        
+        return formatter.string(from: self)
+    }
+    
 }

@@ -14,7 +14,7 @@ class TaskDetailTableViewController: UITableViewController {
         super.viewDidLoad()
     }
     
-    // MARK: Actions
+    // MARK: IBActions
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         updateTask()
@@ -36,7 +36,7 @@ class TaskDetailTableViewController: UITableViewController {
         self.taskNotesTextView.resignFirstResponder()
     }
     
-    //MARK: Private
+    //MARK: Private Functions
     
     private func updateTask() {
         
@@ -69,6 +69,8 @@ class TaskDetailTableViewController: UITableViewController {
     }
     
     var dueDateValue: Date?
+
+    //MARK: - IBOutlets
     
     @IBOutlet weak var taskNameTextField: UITextField!
     @IBOutlet weak var taskDueTextField: UITextField!

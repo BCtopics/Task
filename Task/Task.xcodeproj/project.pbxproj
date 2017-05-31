@@ -11,6 +11,8 @@
 		6B43E65B1EDF5324006B9350 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B43E6591EDF5324006B9350 /* Main.storyboard */; };
 		6B43E65D1EDF5324006B9350 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B43E65C1EDF5324006B9350 /* Assets.xcassets */; };
 		6B43E6601EDF5324006B9350 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B43E65E1EDF5324006B9350 /* LaunchScreen.storyboard */; };
+		6BA67FB71EDF56D1001C2042 /* TaskListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA67FB61EDF56D1001C2042 /* TaskListTableViewController.swift */; };
+		6BA67FB91EDF5724001C2042 /* TaskDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA67FB81EDF5724001C2042 /* TaskDetailTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		6B43E65C1EDF5324006B9350 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B43E65F1EDF5324006B9350 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B43E6611EDF5324006B9350 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BA67FB61EDF56D1001C2042 /* TaskListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListTableViewController.swift; sourceTree = "<group>"; };
+		6BA67FB81EDF5724001C2042 /* TaskDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 			isa = PBXGroup;
 			children = (
 				6B43E6591EDF5324006B9350 /* Main.storyboard */,
+				6BA67FB61EDF56D1001C2042 /* TaskListTableViewController.swift */,
+				6BA67FB81EDF5724001C2042 /* TaskDetailTableViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -150,7 +156,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BA67FB71EDF56D1001C2042 /* TaskListTableViewController.swift in Sources */,
 				6B43E6561EDF5324006B9350 /* AppDelegate.swift in Sources */,
+				6BA67FB91EDF5724001C2042 /* TaskDetailTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +322,7 @@
 				6B43E6661EDF5324006B9350 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

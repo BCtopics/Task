@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,15 +20,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" id="4ib-zu-QnF">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="5au-1D-axN" customClass="ButtonTableViewCell" customModule="Task" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4ib-zu-QnF" id="Ybw-F9-miY">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5au-1D-axN" id="PgV-WI-tdY">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fjg-9x-EYU">
+                                            <rect key="frame" x="8" y="0.0" width="359" height="43.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLV-iA-p1z">
+                                                    <rect key="frame" x="0.0" y="0.0" width="315.5" height="43.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4P-ej-NHS">
+                                                    <rect key="frame" x="315.5" y="0.0" width="43.5" height="43.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="M4P-ej-NHS" secondAttribute="height" multiplier="1:1" id="MMz-ga-mJs"/>
+                                                    </constraints>
+                                                    <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                                    <state key="normal" image="incomplete"/>
+                                                    <connections>
+                                                        <action selector="buttonTapped:" destination="5au-1D-axN" eventType="touchUpInside" id="SLd-rr-zNw"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Fjg-9x-EYU" firstAttribute="leading" secondItem="PgV-WI-tdY" secondAttribute="leadingMargin" id="7C1-13-ENp"/>
+                                        <constraint firstItem="Fjg-9x-EYU" firstAttribute="top" secondItem="PgV-WI-tdY" secondAttribute="topMargin" constant="-8" id="7wJ-iL-dCt"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Fjg-9x-EYU" secondAttribute="bottom" constant="-8" id="fEC-gK-XZX"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Fjg-9x-EYU" secondAttribute="trailing" id="pB2-Kj-MdW"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="DfP-oG-t4w" kind="show" identifier="detailSegue" id="69I-Em-7kB"/>
+                                    <outlet property="completeButton" destination="M4P-ej-NHS" id="nWw-Au-x6s"/>
+                                    <outlet property="primaryLabel" destination="MLV-iA-p1z" id="cCO-AN-68v"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -197,7 +230,7 @@
             <point key="canvasLocation" x="862" y="355"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="69I-Em-7kB"/>
-    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="incomplete" width="512" height="512"/>
+    </resources>
 </document>

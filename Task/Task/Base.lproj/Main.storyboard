@@ -26,7 +26,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="DfP-oG-t4w" kind="show" id="69I-Em-7kB"/>
+                                    <segue destination="DfP-oG-t4w" kind="show" identifier="detailSegue" id="69I-Em-7kB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -198,6 +198,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="JD5-ML-zdG"/>
+        <segue reference="69I-Em-7kB"/>
     </inferredMetricsTieBreakers>
 </document>

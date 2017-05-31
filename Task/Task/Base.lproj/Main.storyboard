@@ -50,7 +50,7 @@
         <!--Task Name-->
         <scene sceneID="cgo-ES-3dh">
             <objects>
-                <tableViewController id="DfP-oG-t4w" sceneMemberID="viewController">
+                <tableViewController id="DfP-oG-t4w" customClass="TaskDetailTableViewController" customModule="Task" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="FEq-xF-tsz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -117,18 +117,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Task Notes..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kN5-Hg-e3b">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cSq-xn-5c8">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="kN5-Hg-e3b" firstAttribute="leading" secondItem="jK0-YW-23f" secondAttribute="leading" id="30n-8z-ZBN"/>
-                                                <constraint firstAttribute="trailing" secondItem="kN5-Hg-e3b" secondAttribute="trailing" id="82H-3t-C9c"/>
-                                                <constraint firstItem="kN5-Hg-e3b" firstAttribute="top" secondItem="jK0-YW-23f" secondAttribute="top" id="QIl-bt-0Mw"/>
-                                                <constraint firstAttribute="bottom" secondItem="kN5-Hg-e3b" secondAttribute="bottom" id="eDe-xt-c3L"/>
+                                                <constraint firstItem="cSq-xn-5c8" firstAttribute="top" secondItem="jK0-YW-23f" secondAttribute="top" id="8ZO-YA-NOV"/>
+                                                <constraint firstAttribute="trailing" secondItem="cSq-xn-5c8" secondAttribute="trailing" id="Cpn-rk-JZ3"/>
+                                                <constraint firstItem="cSq-xn-5c8" firstAttribute="leading" secondItem="jK0-YW-23f" secondAttribute="leading" id="Ogm-eK-9dR"/>
+                                                <constraint firstAttribute="bottom" secondItem="cSq-xn-5c8" secondAttribute="bottom" id="hoC-L0-oKf"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -141,11 +141,40 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Task Name" id="mhk-91-CBS">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="GMY-cr-oVe"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ir1-b0-UYz"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="GMY-cr-oVe">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="DfP-oG-t4w" id="IIZ-UH-BRZ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ir1-b0-UYz">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="DfP-oG-t4w" id="VMb-9R-QfL"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dueDatePicker" destination="B6e-AM-HHK" id="9Sb-c0-S5C"/>
+                        <outlet property="taskDueTextField" destination="asq-7y-abC" id="hRH-nJ-oeE"/>
+                        <outlet property="taskNameTextField" destination="a1F-eh-lFq" id="4uk-Pw-fUd"/>
+                        <outlet property="taskNotesTextView" destination="cSq-xn-5c8" id="rbu-3a-6IS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7YR-ks-Ytk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="B6e-AM-HHK">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <date key="date" timeIntervalSinceReferenceDate="517957538.19525898">
+                        <!--2017-05-31 21:05:38 +0000-->
+                    </date>
+                    <connections>
+                        <action selector="datePickerValueChanged:" destination="DfP-oG-t4w" eventType="valueChanged" id="HOP-ry-mdN"/>
+                    </connections>
+                </datePicker>
+                <tapGestureRecognizer id="AJX-5h-mp0">
+                    <connections>
+                        <action selector="userTappedView:" destination="DfP-oG-t4w" id="Xec-4Y-1pP"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2472.8000000000002" y="354.87256371814095"/>
         </scene>

@@ -10,6 +10,10 @@ import UIKit
 
 class ButtonTableViewCell: UITableViewCell {
     
+    //MARK: - Internal Properties
+    
+    var delegate: ButtonTableViewCellDelegate?
+    
     //MARK: - IBOutlets
     
     @IBOutlet weak var primaryLabel: UILabel!
@@ -18,9 +22,7 @@ class ButtonTableViewCell: UITableViewCell {
     //MARK: - IBActions
     
     @IBAction func buttonTapped(_ sender: Any) {
-        
-        
-        
+        delegate?.buttonCellButtonTapped(self)
     }
     
     func updateButton(_ isComplete: Bool) {

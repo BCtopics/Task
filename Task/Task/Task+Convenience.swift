@@ -20,3 +20,10 @@ extension Task {
         self.isComplete = false
     }
 }
+
+
+protocol ButtonTableViewCellDelegate {
+    
+    func buttonCellButtonTapped(_ sender: ButtonTableViewCell)
+    
+}

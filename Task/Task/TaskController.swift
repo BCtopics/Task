@@ -53,4 +53,17 @@ class TaskController {
         return mockTasks
     }
     
+    func toggleIsCompleteFor(task: Task) {
+        task.isComplete = !task.isComplete
+    }
+    
 }
+
+
+
+
+
+
+
+
+

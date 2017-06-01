@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TaskListTableViewController: UITableViewController {
+class TaskListTableViewController: UITableViewController, ButtonTableViewCellDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,7 @@ class TaskListTableViewController: UITableViewController {
 
         let task = TaskController.shared.tasks[indexPath.row]
         cell.update(withTask: task)
+        cell.delegate = self
         
 
         return cell
@@ -69,6 +70,16 @@ class TaskListTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     
+    // MARK: ButtonTableViewCellDelegate
+    
+    func buttonCellButtonTapped(_ sender: ButtonTableViewCell) {
+        
+        guard let indexPath = tableView.indexPath(for: sender) else { return }
+        let task = TaskController.shared.tasks[indexPath.row]
+        TaskController.shared.toggleIsCompleteFor(task: task)
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+        
+    }
 
 }
 

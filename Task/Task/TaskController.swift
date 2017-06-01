@@ -18,8 +18,6 @@ class TaskController {
     
     //MARK: - Internal Properties
     
-    var tasks: [Task] = []
-    
     // Mock Data
     var mockTasks: [Task] = {
         [ Task(name: "Task1"), Task(name: "Task2", notes: "Notes 1", due: Date()) ]
@@ -28,7 +26,7 @@ class TaskController {
     //MARK: - Initializers
     
     init() {
-        tasks = fetchTasks()
+        
     }
     
     //MARK: - Add, Update, Remove, Save functions
@@ -37,7 +35,6 @@ class TaskController {
         
         let _ = Task(name: name, notes: notes, due: due)
         saveToPersistentStore()
-        tasks = fetchTasks()
         
     }
     
@@ -47,7 +44,6 @@ class TaskController {
         task.notes = notes
         task.due = due as NSDate?
         saveToPersistentStore()
-        tasks = fetchTasks()
         
     }
     
@@ -55,7 +51,6 @@ class TaskController {
         
         task.managedObjectContext?.delete(task)
         saveToPersistentStore()
-        tasks = fetchTasks()
         
     }
     
@@ -74,11 +69,6 @@ class TaskController {
         } catch {
             print("Error saving Managed Object Context. Items not saved.")
         }
-    }
-    
-    private func fetchTasks() -> [Task] {
-        let request: NSFetchRequest<Task> = Task.fetchRequest()
-        return (try? CoreDataStack.context.fetch(request)) ?? []
     }
     
 }

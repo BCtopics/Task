@@ -8,45 +8,49 @@
 
 import UIKit
 
-class TaskListTableViewController: UITableViewController {
+class TaskListTableViewController: UITableViewController, ButtonTableViewCellDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        
+        guard let sections = TaskController.shared.fetchedResultsController.sections?.count else { return 0 }
+        return sections
+        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+        guard let sections = TaskController.shared.fetchedResultsController.sections else {
+            NSLog("No sections in fetchedResultsController"); return 0;
+        }
+        let sectionInfo = sections[section]
+        return sectionInfo.numberOfObjects
+        
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as? ButtonTableViewCell else { return UITableViewCell() }
+        
+        let task = TaskController.shared.fetchedResultsController.object(at: indexPath)
+        cell.update(withTask: task)
+        cell.delegate = self
 
         return cell
     }
-    */
-
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let sectionInfo = TaskController.shared.fetchedResultsController.sections,
+            let index = Int(sectionInfo[section].name) else { return nil }
+        return index
+    }
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -82,14 +86,27 @@ class TaskListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "detailSegue" {
+            
+            let destinationViewController = segue.destination as? TaskDetailTableViewController
+            
+            if let taskDetailViewController = destinationViewController {
+                
+                // force the destination view controller to draw all subviews for updating
+                _ = taskDetailViewController.view
+                
+                if let indexPath = tableView.indexPathForSelectedRow,
+                    let task = TaskController.shared.fetchedResultsController.object(at: indexPath) as? Task {
+                    taskDetailViewController.task = task
+                }
+            }
+        }
     }
-    */
+    
 
 }

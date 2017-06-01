@@ -60,6 +60,7 @@
                                 <connections>
                                     <outlet property="completeButton" destination="M4P-ej-NHS" id="nWw-Au-x6s"/>
                                     <outlet property="primaryLabel" destination="MLV-iA-p1z" id="cCO-AN-68v"/>
+                                    <segue destination="DfP-oG-t4w" kind="show" identifier="detailSegue" id="dEI-2y-H2N"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -233,4 +234,7 @@
     <resources>
         <image name="incomplete" width="512" height="512"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="dEI-2y-H2N"/>
+    </inferredMetricsTieBreakers>
 </document>

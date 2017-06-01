@@ -18,6 +18,8 @@ class TaskController {
     
     //MARK: - Internal Properties
     
+    let fetchedResultsController: NSFetchedResultsController<Task>
+    
     // Mock Data
     var mockTasks: [Task] = {
         [ Task(name: "Task1"), Task(name: "Task2", notes: "Notes 1", due: Date()) ]
@@ -26,6 +28,25 @@ class TaskController {
     //MARK: - Initializers
     
     init() {
+        
+        // Request
+        let request: NSFetchRequest<Task> = Task.fetchRequest()
+        
+        // Adding Sort Descriptors to that request
+        request.sortDescriptors = [NSSortDescriptor(key: "isComplete", ascending: true), NSSortDescriptor(key: "due", ascending: true)]
+        
+        // Creating actual controller with the request, and managedobjectcontext i've already created.
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: "favorites", cacheName: nil) // Confused about the sectionNameKeyPath
+        
+//        fetchedResultsController.delegate = self
+        
+        // Perform Fetch
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            NSLog("Error performing fetch request: \(error.localizedDescription)")
+        }
+        
         
     }
     

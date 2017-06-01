@@ -145,7 +145,7 @@
                             <tableViewSection headerTitle="Notes" id="4Wg-N0-HcQ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="vP5-qq-nOx">
-                                        <rect key="frame" x="0.0" y="256" width="375" height="150"/>
+                                        <rect key="frame" x="0.0" y="255.5" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vP5-qq-nOx" id="jK0-YW-23f">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>

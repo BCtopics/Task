@@ -12,6 +12,7 @@ class TaskDetailTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews() // Try
     }
     
     // MARK: IBActions
